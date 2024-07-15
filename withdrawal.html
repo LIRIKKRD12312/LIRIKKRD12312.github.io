@@ -13,7 +13,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(to bottom, #2f3542, #1e272e);
+            background-color: #1e272e;
             color: #fff;
         }
         .container {
@@ -66,14 +66,21 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+
             font-weight: 600;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, color 0.3s;
+            width: 100%;
         }
         button:hover {
             background-color: #e08b38;
         }
-
+        .info {
+            margin-top: 24px;
+            text-align: center;
+            color: #b2bec3;
+            font-size: 14px;
+        }
         @media (max-width: 768px) {
             h1 {
                 font-size: 24px;
@@ -86,6 +93,9 @@
                 font-size: 14px;
                 padding: 12px 20px;
             }
+            .info {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -94,28 +104,31 @@
         <h1>Вывод средств</h1>
         <div class="input-container">
             <label for="withdrawal-amount">Введите сумму:</label>
-            <input type="text" id="withdrawal-amount" placeholder="Сумма">
+            <input type="number" id="withdrawal-amount" placeholder="Сумма" step="0.01">
         </div>
         <div class="button-row">
             <button onclick="handleWithdrawal()">Вывести</button>
             <button onclick="window.location.href = 'index.html'">Отмена</button>
         </div>
+        <div class="info">
+            Выбрать другой способ вывода
+        </div>
     </div>
 
     <script>
         function handleWithdrawal() {
-
             const withdrawalAmount = parseFloat(document.getElementById('withdrawal-amount').value);
             if (!isNaN(withdrawalAmount) && withdrawalAmount > 0 && withdrawalAmount <= balance) {
                 balance -= withdrawalAmount;
-                updateBalance(-withdrawalAmount);
+                // Здесь будет логика для вывода средств
+                showNotification("Запрос принят. Средства зачислятся в течение 15 минут!");
                 window.location.href = 'index.html';
             }
         }
 
-        function updateBalance(amount) {
-            balance += amount;
-            balanceElement.textContent = formatBalance(balance);
+        function showNotification(message) {
+            // Код для отображения всплывающего уведомления
+            alert(message);
         }
     </script>
 </body>
