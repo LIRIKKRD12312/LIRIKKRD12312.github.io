@@ -69,6 +69,7 @@
             font-weight: 600;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, color 0.3s;
+            width: 100%;
         }
         button:hover {
             background-color: #e08b38;
@@ -104,7 +105,6 @@
 
     <script>
         function handleDeposit() {
-
             const depositAmount = parseFloat(document.getElementById('deposit-amount').value);
             if (!isNaN(depositAmount) && depositAmount > 0) {
                 balance += depositAmount;
@@ -117,6 +117,7 @@
             balance += amount;
             balanceElement.textContent = formatBalance(balance);
         }
+
     </script>
 </body>
 </html>
