@@ -16,6 +16,7 @@
             background-color: #1e272e;
             color: #fff;
         }
+
         .container {
             flex-grow: 1;
             display: flex;
@@ -24,6 +25,7 @@
             justify-content: center;
             padding: 24px;
         }
+
         .header {
             display: flex;
             align-items: center;
@@ -32,12 +34,14 @@
             max-width: 480px;
             margin-bottom: 32px;
         }
+
         .header h1 {
             margin: 0;
             color: #ff9f43;
             font-size: 32px;
             font-weight: 700;
         }
+
         .header button {
             padding: 12px 24px;
             background-color: #ff9f43;
@@ -50,20 +54,24 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, color 0.3s;
         }
+
         .header button:hover {
             background-color: #e08b38;
         }
+
         .input-container {
             width: 100%;
             max-width: 480px;
             margin-bottom: 32px;
         }
+
         .input-container label {
             display: block;
             margin-bottom: 8px;
             color: #ff9f43;
             font-weight: 600;
         }
+
         .input-container input {
             width: 300px;
             padding: 12px 16px;
@@ -73,6 +81,7 @@
             background-color: #1e272e;
             color: #fff;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
@@ -80,6 +89,7 @@
             width: 100%;
             max-width: 480px;
         }
+
         .buttons button {
             padding: 16px 24px;
             background-color: #ff9f43;
@@ -92,15 +102,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, color 0.3s;
         }
+
         .buttons button:hover {
             background-color: #e08b38;
         }
+
         .info {
             margin-top: 24px;
             text-align: center;
             color: #b2bec3;
             font-size: 14px;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -112,6 +125,7 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
         }
+
         .modal-content {
             background-color: #1e272e;
             margin: 15% auto;
@@ -121,31 +135,57 @@
             max-width: 400px;
             text-align: center;
         }
+
+        .modal-content h2 {
+            color: #ff9f43;
+
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            background-color: #1e272e;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .modal-content button {
+            padding: 12px 24px;
+            background-color: #ff9f43;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .modal-content button:hover {
+            background-color: #e08b38;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 24px;
+            }
 
+            .input-container input,
+            .modal-content input {
+                width: 100%;
+                max-width: 100%;
             }
-            .header button {
-                font-size: 14px;
-                padding: 10px 20px;
-            }
-            .input-container {
-                margin-bottom: 24px;
-            }
-            .input-container input {
-                font-size: 14px;
-                padding: 10px 14px;
-            }
+
             .buttons button {
                 font-size: 16px;
-                padding: 14px 20px;
-            }
-            .info {
-                font-size: 12px;
-            }
-            .modal-content {
-                margin: 30% auto;
             }
         }
     </style>
@@ -154,51 +194,58 @@
     <div class="container">
         <div class="header">
             <h1>Вывод средств</h1>
-            <button onclick="window.location.href = 'index.html'">Назад</button>
+            <button id="enter-details">Ввести реквизиты</button>
         </div>
         <div class="input-container">
-            <label for="withdrawal-amount">Введите сумму:</label>
-            <input type="number" id="withdrawal-amount" placeholder="Сумма" step="0.01">
+            <label for="withdrawal-amount">Сумма для вывода:</label>
+            <input type="text" id="withdrawal-amount" placeholder="Введите сумму">
         </div>
         <div class="buttons">
-            <button onclick="handleWithdrawal()">Вывести</button>
-            <button onclick="handleExchangeAll()">Обменять все</button>
+            <button id="withdraw-button">Вывести</button>
         </div>
         <div class="info">
-            Выбрать другой способ вывода
+            Выводите средства с осторожностью. Убедитесь, что указали правильные реквизиты.
         </div>
     </div>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <h2>Запрос принят</h2>
-            <p>Средства зачислятся в течение 15 минут!</p>
+            <h2>Ввести реквизиты</h2>
+            <input type="text" id="recipient-details" placeholder="Введите реквизиты">
+            <button id="save-details">Сохранить</button>
         </div>
     </div>
 
     <script>
-        function handleWithdrawal() {
-            const withdrawalAmount = parseFloat(document.getElementById('withdrawal-amount').value);
-            if (!isNaN(withdrawalAmount) && withdrawalAmount > 0 && withdrawalAmount <= balance) {
-                balance -= withdrawalAmount;
-                // Здесь будет логика для вывода средств
-                showNotification();
-                window.location.href = 'index.html';
-            }
+        // Функция для вывода средств
+        function withdrawFunds() {
+            const withdrawalAmount = document.getElementById('withdrawal-amount').value;
+            // Здесь можно добавить логику для вывода средств
+            console.log(`Выведено ${withdrawalAmount} средств.`);
         }
 
-        function handleExchangeAll() {
-            // Код для обмена всех HMSTR
-            showNotification();
+        // Функция для открытия модального окна ввода реквизитов
+        function openModal() {
+            document.getElementById('myModal').style.display = 'block';
         }
 
-        function showNotification() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "block";
-            setTimeout(function() {
-                modal.style.display = "none";
-            }, 3000);
+        // Функция для сохранения реквизитов
+        function saveDetails() {
+            const recipientDetails = document.getElementById('recipient-details').value;
+            // Здесь можно добавить логику для сохранения реквизитов
+            console.log(`Сохранены реквизиты: ${recipientDetails}`);
+            closeModal();
         }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Обработчики событий
+        document.getElementById('withdraw-button').addEventListener('click', withdrawFunds);
+        document.getElementById('enter-details').addEventListener('click', openModal);
+        document.getElementById('save-details').addEventListener('click', saveDetails);
     </script>
 </body>
 </html>
