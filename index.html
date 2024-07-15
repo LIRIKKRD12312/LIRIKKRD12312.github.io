@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HMSTR Wallet</title>
+    <title>HSTR Wallet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -13,7 +13,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(to bottom, #2f3542, #1e272e);
+            background-color: #1e272e;
             color: #fff;
         }
         .container {
@@ -24,54 +24,66 @@
             justify-content: center;
             padding: 24px;
         }
-        .user-info {
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .profile-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: #ff9f43;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-right: 16px;
+        }
+        .profile-info h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .profile-info p {
+            margin: 4px 0 0;
+            font-size: 14px;
+            color: #b2bec3;
+        }
+        .balance {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 32px;
-            flex-grow: 1;
         }
-        .profile-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #ff9f43;
+        .balance-hmstr,
+        .balance-rub {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-bottom: 16px;
-            font-size: 32px;
-            color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        #user-name {
-            font-size: 24px;
-            font-weight: 600;
             margin-bottom: 8px;
         }
-        #balance {
-            font-size: 20px;
-            color: #ff9f43;
+        .balance-hmstr h3,
+        .balance-rub h3 {
+            margin: 0;
+            font-size: 24px;
             font-weight: 700;
+            margin-right: 8px;
         }
-        .button-container {
-            width: 100%;
-            padding: 24px 16px;
-            box-sizing: border-box;
-            height: 50vh;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+        .balance-hmstr p,
+        .balance-rub p {
+            margin: 0;
+            font-size: 16px;
+            color: #b2bec3;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
-        }
-        .button-row {
-            display: flex;
-            flex-direction: column;
             width: 100%;
-            gap: 16px;
+            max-width: 400px;
         }
-        button {
+        .buttons button {
             padding: 16px 24px;
             background-color: #ff9f43;
             color: #fff;
@@ -82,59 +94,92 @@
             font-weight: 600;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, color 0.3s;
+            width: 100%;
         }
-        button:hover {
+        .buttons button:hover {
             background-color: #e08b38;
         }
-
+        .info {
+            margin-top: 32px;
+            text-align: center;
+            color: #b2bec3;
+            font-size: 14px;
+        }
         @media (max-width: 768px) {
-            .profile-icon {
-                width: 64px;
-                height: 64px;
-                font-size: 24px;
-            }
-            #user-name {
-                font-size: 20px;
-            }
-            #balance {
+            .profile-avatar {
+                width: 48px;
+                height: 48px;
                 font-size: 18px;
             }
-            button {
+            .profile-info h2 {
+                font-size: 18px;
+            }
+            .profile-info p {
+                font-size: 12px;
+            }
+            .balance-hmstr h3,
+            .balance-rub h3 {
+                font-size: 20px;
+            }
+            .balance-hmstr p,
+            .balance-rub p {
                 font-size: 14px;
+            }
+            .buttons button {
+                font-size: 14px;
+
                 padding: 12px 20px;
+            }
+            .info {
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="user-info">
-            <div class="profile-icon">IV</div>
-            <span id="user-name">Иван Иванов</span>
-            <span id="balance">1,000.00 ₽</span>
+        <div class="profile">
+            <div class="profile-avatar">H</div>
+            <div class="profile-info">
+                <h2>HSTR Wallet</h2>
+                <p>UQS3...32SS</p>
+            </div>
         </div>
-    </div>
-    <div class="button-container">
-        <div class="button-row">
+        <div class="balance">
+            <div class="balance-hmstr">
+                <h3>32.213</h3>
+                <p>HMSTR</p>
+            </div>
+            <div class="balance-rub">
+                <h3>345.124</h3>
+                <p>RUB</p>
+            </div>
+        </div>
+        <div class="buttons">
             <button onclick="window.location.href = 'deposit.html'">Пополнить баланс</button>
-            <button onclick="window.location.href = 'withdrawal.html'">Вывести средства на карту</button>
-
-            <button onclick="window.location.href = 'exchange.html'">Обменять HMSTR</button>
+            <button onclick="window.location.href = 'withdrawal.html'">Вывести средства</button>
+            <button onclick="handleExchange()">Обменять HMSTR</button>
+            <button onclick="handleTransfer()">Перевести на кошелек</button>
+        </div>
+        <div class="info">
+            Выбрать другой способ вывода
         </div>
     </div>
 
     <script>
-        const userNameElement = document.getElementById('user-name');
-        const balanceElement = document.getElementById('balance');
-        let balance = 1000;
-
-        function formatBalance(balance) {
-            return `${balance.toFixed(2)} ₽`;
+        function handleExchange() {
+            // Код для обмена HMSTR
+            showNotification("Запрос принят. Средства зачислятся в течение 15 минут!");
         }
 
-        function updateBalance(amount) {
-            balance += amount;
-            balanceElement.textContent = formatBalance(balance);
+        function handleTransfer() {
+            // Код для перевода на кошелек
+            showNotification("Запрос принят. Средства зачислятся в течение 15 минут!");
+        }
+
+        function showNotification(message) {
+            // Код для отображения всплывающего уведомления
+            alert(message);
         }
     </script>
 </body>
