@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Вывод средств - HSTR Wallet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(to bottom, #0D172A, #1E293B);
+            background-image: radial-gradient(circle, #0B2447, #1C1D24, #2D2D3B);
             color: #fff;
         }
 
@@ -31,16 +31,16 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin-bottom: 40px;
         }
 
         .header h1 {
             margin: 0;
-            color: #FFC107;
-            font-size: 36px;
+            color: #FFC300;
+            font-size: 40px;
             font-weight: 700;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
         }
 
         .header .buttons {
@@ -49,46 +49,47 @@
         }
 
         .header button {
-            padding: 12px 24px;
-            background-color: #4F46E5;
-            color: #fff;
+            padding: 14px 28px;
+            background-color: #FFC300;
+            color: #0B2447;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
             transition: background-color 0.3s, color 0.3s;
         }
 
         .header button:hover {
-            background-color: #3730A3;
+            background-color: #ffd040;
         }
 
         .input-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin-bottom: 40px;
         }
 
         .input-container label {
             display: block;
             margin-bottom: 8px;
-            color: #FFC107;
+            color: #FFC300;
             font-weight: 500;
             font-size: 16px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .input-container input {
             width: 100%;
-            max-width: 600px;
-            padding: 12px 16px;
+            max-width: 800px;
+            padding: 14px 20px;
             font-size: 16px;
             border: none;
-            border-radius: 8px;
-            background-color: #1E293B;
+            border-radius: 10px;
+            background-color: #1C1D24;
             color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.2);
         }
 
         .buttons {
@@ -96,32 +97,34 @@
             flex-direction: column;
             gap: 16px;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
         }
 
         .buttons button {
-            padding: 16px 24px;
-            background-color: #4F46E5;
-            color: #fff;
+            padding: 18px 28px;
+            background-color: #FFC300;
+            color: #0B2447;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 18px;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
             transition: background-color 0.3s, color 0.3s;
         }
 
         .buttons button:hover {
-            background-color: #3730A3;
+            background-color: #ffd040;
         }
 
         .output {
             margin-top: 24px;
             text-align: center;
-            color: #CBD5E1;
+            color: #FFFFFF;
             font-size: 16px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 195, 0, 0.2);
         }
 
         .modal {
@@ -133,67 +136,71 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.6);
         }
 
         .modal-content {
-            background-color: #1E293B;
+            background-color: #1C1D24;
             margin: 15% auto;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
             width: 80%;
-            max-width: 400px;
+            max-width: 500px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
         }
 
         .modal-content h2 {
-            color: #FFC107;
-            font-size: 24px;
+            color: #FFC300;
+            font-size: 28px;
             font-weight: 600;
-            margin-bottom: 16px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 195, 0, 0.2);
         }
 
         .modal-content input {
             width: 100%;
-            max-width: 300px;
-            padding: 12px 16px;
+            max-width: 400px;
+            padding: 14px 20px;
             font-size: 16px;
             border: none;
-            border-radius: 8px;
-            background-color: #1E293B;
+            border-radius: 10px;
+            background-color: #1C1D24;
             color: #fff;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.2);
         }
 
         .modal-content button {
-            padding: 12px 24px;
-            background-color: #4F46E5;
-            color: #fff;
+            padding: 14px 28px;
+            background-color: #FFC300;
+            color: #0B2447;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
             transition: background-color 0.3s, color 0.3s;
         }
 
         .modal-content button:hover {
-            background-color: #3730A3;
+            background-color: #ffd040;
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
 
             .header .buttons {
                 flex-direction: column;
                 align-items: flex-end;
+            }
+
+            .header button {
+                padding: 12px 24px;
+                font-size: 14px;
             }
 
             .input-container input,
@@ -240,6 +247,7 @@
             const withdrawalAmount = document.getElementById('withdrawal-amount').value;
             // Здесь можно добавить логику для вывода средств
             console.log(`Выведено ${withdrawalAmount} средств.`);
+
             document.getElementById('output-text').textContent = `Выведено ${withdrawalAmount} средств.`;
         }
 
@@ -252,7 +260,6 @@
         function saveDetails() {
             const recipientDetails = document.getElementById('recipient-details').value;
             // Здесь можно добавить логику для сохранения реквизитов
-
             console.log(`Сохранены реквизиты: ${recipientDetails}`);
             closeModal();
         }
