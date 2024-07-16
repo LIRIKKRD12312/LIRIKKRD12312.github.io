@@ -43,6 +43,11 @@
             text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .header .buttons {
+            display: flex;
+            gap: 16px;
+        }
+
         .header button {
             padding: 12px 24px;
             background-color: #4F46E5;
@@ -128,6 +133,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
+
             background-color: rgba(0, 0, 0, 0.4);
         }
 
@@ -185,6 +191,11 @@
                 font-size: 28px;
             }
 
+            .header .buttons {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
             .input-container input,
             .modal-content input {
                 width: 100%;
@@ -201,14 +212,16 @@
     <div class="container">
         <div class="header">
             <h1>Вывод средств</h1>
-            <button id="enter-details">Ввести реквизиты</button>
+            <div class="buttons">
+                <button id="withdraw-button">Вывести</button>
+                <button id="enter-details">Ввести реквизиты</button>
+            </div>
         </div>
         <div class="input-container">
             <label for="withdrawal-amount">Сумма для вывода:</label>
             <input type="text" id="withdrawal-amount" placeholder="Введите сумму">
         </div>
         <div class="buttons">
-            <button id="withdraw-button">Вывести</button>
         </div>
         <div class="output" id="output-text"></div>
     </div>
@@ -239,6 +252,7 @@
         function saveDetails() {
             const recipientDetails = document.getElementById('recipient-details').value;
             // Здесь можно добавить логику для сохранения реквизитов
+
             console.log(`Сохранены реквизиты: ${recipientDetails}`);
             closeModal();
         }
