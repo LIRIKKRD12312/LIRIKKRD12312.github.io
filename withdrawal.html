@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Вывод средств - HSTR Wallet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: radial-gradient(circle, #0B2447, #1C1D24, #2D2D3B);
+            background-color: #1F2235;
             color: #fff;
         }
 
@@ -27,104 +27,94 @@
         }
 
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 800px;
             margin-bottom: 40px;
+            text-align: center;
         }
 
         .header h1 {
-            margin: 0;
-            color: #FFC300;
-            font-size: 40px;
+            margin: 0 0 16px;
+            color: #FFDE59;
+            font-size: 36px;
             font-weight: 700;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 222, 89, 0.2);
         }
 
-        .header .buttons {
+        .header p {
+            margin: 0;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 500px;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .actions {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
             gap: 16px;
+            margin-bottom: 24px;
         }
 
-        .header button {
-            padding: 14px 28px;
-            background-color: #FFC300;
-            color: #0B2447;
+        .withdraw-button,
+        .enter-details-button {
+            flex: 1;
+            padding: 16px 32px;
+            background-color: #FFDE59;
+            color: #1F2235;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
-            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 222, 89, 0.4);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
 
-        .header button:hover {
-            background-color: #ffd040;
+        .withdraw-button:hover,
+        .enter-details-button:hover {
+            background-color: #ffe87a;
+            transform: scale(1.05);
         }
 
         .input-container {
             width: 100%;
-            max-width: 800px;
             margin-bottom: 40px;
         }
 
         .input-container label {
             display: block;
             margin-bottom: 8px;
-            color: #FFC300;
-            font-weight: 500;
+            color: #FFDE59;
+            font-weight: 600;
             font-size: 16px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .input-container input {
             width: 100%;
-            max-width: 800px;
-            padding: 14px 20px;
+            padding: 16px 24px;
             font-size: 16px;
             border: none;
-            border-radius: 10px;
-            background-color: #1C1D24;
+            border-radius: 50px;
+            background-color: #2F3346;
             color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.2);
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .buttons button {
-            padding: 18px 28px;
-            background-color: #FFC300;
-            color: #0B2447;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .buttons button:hover {
-            background-color: #ffd040;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 222, 89, 0.2);
         }
 
         .output {
             margin-top: 24px;
             text-align: center;
             color: #FFFFFF;
-            font-size: 16px;
-            font-weight: 500;
-
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 195, 0, 0.2);
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 222, 89, 0.2);
         }
 
         .modal {
@@ -140,77 +130,99 @@
         }
 
         .modal-content {
-            background-color: #1C1D24;
+            background-color: #2F3346;
             margin: 15% auto;
-            padding: 30px;
+            padding: 40px;
             border-radius: 16px;
             width: 80%;
-            max-width: 500px;
+            max-width: 600px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 222, 89, 0.4);
         }
 
         .modal-content h2 {
-            color: #FFC300;
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 195, 0, 0.2);
+            color: #FFDE59;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(255, 222, 89, 0.2);
         }
 
         .modal-content input {
             width: 100%;
-            max-width: 400px;
-            padding: 14px 20px;
+            max-width: 500px;
+            padding: 16px 24px;
             font-size: 16px;
             border: none;
-            border-radius: 10px;
-            background-color: #1C1D24;
+            border-radius: 50px;
+            background-color: #2F3346;
             color: #fff;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.2);
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 222, 89, 0.2);
         }
 
         .modal-content button {
-            padding: 14px 28px;
-            background-color: #FFC300;
-            color: #0B2447;
+            padding: 12px 24px;
+            background-color: #FFDE59;
+            color: #1F2235;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 195, 0, 0.4);
-            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(255, 222, 89, 0.4);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
         }
 
         .modal-content button:hover {
-            background-color: #ffd040;
+            background-color: #ffe87a;
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 32px;
+                font-size: 28px;
             }
 
-            .header .buttons {
+            .header p {
+                font-size: 16px;
+            }
+
+            .actions {
                 flex-direction: column;
-                align-items: flex-end;
+                gap: 12px;
             }
 
-            .header button {
-                padding: 12px 24px;
+            .withdraw-button,
+            .enter-details-button {
+                font-size: 16px;
+                padding: 14px 28px;
+            }
+
+            .input-container label {
                 font-size: 14px;
             }
 
-            .input-container input,
-            .modal-content input {
-                width: 100%;
-                max-width: 100%;
+            .input-container input {
+                font-size: 14px;
+                padding: 14px 20px;
             }
 
-            .buttons button {
+            .output {
                 font-size: 16px;
+            }
+
+            .modal-content {
+                margin: 20% auto;
+            }
+
+            .modal-content h2 {
+                font-size: 28px;
+            }
+
+            .modal-content input,
+            .modal-content button {
+                font-size: 14px;
             }
         }
     </style>
@@ -219,16 +231,17 @@
     <div class="container">
         <div class="header">
             <h1>Вывод средств</h1>
-            <div class="buttons">
-                <button id="withdraw-button">Вывести</button>
-                <button id="enter-details">Ввести реквизиты</button>
+            <p>Выведите свои средства из HSTR Wallet</p>
+        </div>
+        <div class="content">
+            <div class="actions">
+                <button class="withdraw-button" id="withdraw-button">Вывести</button>
+                <button class="enter-details-button" id="enter-details-button">Ввести реквизиты</button>
             </div>
-        </div>
-        <div class="input-container">
-            <label for="withdrawal-amount">Сумма для вывода:</label>
-            <input type="text" id="withdrawal-amount" placeholder="Введите сумму">
-        </div>
-        <div class="buttons">
+            <div class="input-container">
+                <label for="withdrawal-amount">Сумма для вывода:</label>
+                <input type="text" id="withdrawal-amount" placeholder="Введите сумму">
+            </div>
         </div>
         <div class="output" id="output-text"></div>
     </div>
@@ -243,11 +256,11 @@
 
     <script>
         // Функция для вывода средств
+
         function withdrawFunds() {
             const withdrawalAmount = document.getElementById('withdrawal-amount').value;
             // Здесь можно добавить логику для вывода средств
             console.log(`Выведено ${withdrawalAmount} средств.`);
-
             document.getElementById('output-text').textContent = `Выведено ${withdrawalAmount} средств.`;
         }
 
@@ -271,7 +284,7 @@
 
         // Обработчики событий
         document.getElementById('withdraw-button').addEventListener('click', withdrawFunds);
-        document.getElementById('enter-details').addEventListener('click', openModal);
+        document.getElementById('enter-details-button').addEventListener('click', openModal);
         document.getElementById('save-details').addEventListener('click', saveDetails);
     </script>
 </body>
